@@ -1,0 +1,58 @@
+[
+  {
+    "id": "p-backpack",
+    "icon": "backpack",
+    "name": { "en": "Hiking Backpack", "de": "Wanderrucksack", "fr": "Sac à dos de randonnée", "it": "Zaino da trekking" },
+    "price": { "ch": 89.9, "de": 79.99, "at": 82.99, "uk": 69.99 },
+    "stock": 12,
+    "markets": ["ch", "de", "at", "uk"]
+  },
+  {
+    "id": "p-bottle",
+    "icon": "bottle",
+    "name": { "en": "Steel Water Bottle", "de": "Stahl-Trinkflasche", "fr": "Gourde en acier", "it": "Borraccia in acciaio" },
+    "price": { "ch": 24.9, "de": 19.99, "at": 21.99, "uk": 17.49 },
+    "stock": 50,
+    "markets": ["ch", "de", "at", "uk"]
+  },
+  {
+    "id": "p-knife",
+    "icon": "tool",
+    "name": { "en": "Swiss Pocket Knife", "de": "Schweizer Taschenmesser", "fr": "Couteau suisse", "it": "Coltellino svizzero" },
+    "price": { "ch": 39.0, "de": 42.5, "at": 43.9, "uk": 36.0 },
+    "stock": 8,
+    "markets": ["ch", "de", "at", "uk"]
+  },
+  {
+    "id": "p-chocolate",
+    "icon": "gift",
+    "name": { "en": "Alpine Chocolate Box", "de": "Alpen-Schokoladenbox", "fr": "Boîte de chocolat alpin", "it": "Scatola di cioccolato alpino" },
+    "price": { "ch": 14.5 },
+    "stock": 100,
+    "markets": ["ch"]
+  },
+  {
+    "id": "p-pretzel",
+    "icon": "bakery",
+    "name": { "en": "Bavarian Pretzel Kit", "de": "Bayerisches Brezel-Set", "fr": "Kit de bretzels bavarois", "it": "Kit pretzel bavarese" },
+    "price": { "de": 12.99, "at": 13.49 },
+    "stock": 30,
+    "markets": ["de", "at"]
+  },
+  {
+    "id": "p-tea",
+    "icon": "tea",
+    "name": { "en": "English Tea Set", "de": "Englisches Teeservice", "fr": "Service à thé anglais", "it": "Servizio da tè inglese" },
+    "price": { "uk": 29.99, "ch": 39.9 },
+    "stock": 0,
+    "markets": ["uk", "ch"]
+  },
+  {
+    "id": "p-jacket",
+    "icon": "apparel",
+    "name": { "en": "Rain Jacket", "de": "Regenjacke", "fr": "Veste de pluie", "it": "Giacca antipioggia" },
+    "price": { "ch": 149.0, "de": 129.0, "at": 134.0, "uk": 115.0 },
+    "stock": 5,
+    "markets": ["ch", "de", "at", "uk"]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "name": "qa-playground",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-market demo web shop built as a target for test automation",
+  "workspaces": [
+    "app"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w app --",
+    "build": "npm run build -w app",
+    "preview": "npm run preview -w app --",
+    "docker:build": "docker build -t qa-playground:local .",
+    "docker:run": "docker run --rm -p 8080:8080 --name qa-playground qa-playground:local"
+  }
+}

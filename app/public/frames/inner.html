@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inner frame</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 12px; color: #1f2937; }
+      button { font: inherit; padding: 6px 10px; background: #059669; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <p data-testid="inner-text">Inner frame (level 2)</p>
+    <button type="button" data-testid="inner-button" onclick="this.textContent = 'Clicked inside nested frame'">Click me</button>
+  </body>
+</html>
