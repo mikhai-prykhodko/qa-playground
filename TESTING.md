@@ -37,6 +37,18 @@ docker run --rm -p 8080:8080 ghcr.io/mikhai-prykhodko/qa-playground:1.0.0
   - `data-strength` on the password meter
   - `data-tick` on the live ticker
 
+## Localization
+
+- **Pseudo-localization:** add `?pseudo=1` to any URL. Every dictionary string then renders as
+  `[!! Wárénkórb~~ !!]` (accented, about 30 % longer) for the rest of the session. `?pseudo=0` turns it off.
+  Visible text without brackets is hardcoded.
+- **Not for translation:** content that must never be translated carries `translate="no"`: product
+  names, user reviews, specs values, codes, the brand. Catalog texts localized by the catalog (not the
+  UI dictionary) carry `data-i18n="content"`. The English-only legacy page is marked `lang="en"`.
+- **Regional German:** the shared German dictionary is Swiss (no "ß"). `de-DE` and `de-AT` add
+  overrides with ß spellings (Straße, Größe), and product descriptions can have `de-DE`/`de-AT` variants.
+- Market names are translated (`market.ch` → "Schweiz", "Suisse", "Svizzera").
+
 ## Parts WITHOUT test ids (on purpose)
 
 Real sites are rarely fully instrumented. These parts have no `data-testid` and must be located by

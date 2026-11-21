@@ -40,7 +40,7 @@ export function Header() {
           <span className="brand__logo" aria-hidden>
             <Icons.brand fontSize="inherit" />
           </span>
-          QA Playground
+          <span translate="no">QA Playground</span>
         </NavLink>
 
         <SearchBox />
@@ -55,7 +55,7 @@ export function Header() {
             >
               {MARKET_CODES.map((code) => (
                 <option key={code} value={code}>
-                  {MARKETS[code].flag} {MARKETS[code].name}
+                  {MARKETS[code].flag} {t(`market.${code}` as TranslationKey)}
                 </option>
               ))}
             </select>
@@ -70,6 +70,7 @@ export function Header() {
                   className={l === lang ? 'chip chip--active' : 'chip'}
                   aria-pressed={l === lang}
                   data-testid={`lang-${l}`}
+                  translate="no"
                   onClick={() => switchLang(l)}
                 >
                   {l.toUpperCase()}
@@ -95,7 +96,7 @@ export function Header() {
         </div>
       </div>
 
-      <nav className="nav" aria-label="Main">
+      <nav className="nav" aria-label={t('nav.main')}>
         {NAV.map((item) => (
           <NavLink
             key={item.key}

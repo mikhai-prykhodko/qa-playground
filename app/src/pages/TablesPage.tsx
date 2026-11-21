@@ -98,7 +98,7 @@ export function TablesPage() {
           <thead>
             <tr>
               <th>
-                <input type="checkbox" aria-label="Select all" checked={allVisibleSelected} onChange={toggleAllVisible} data-testid="select-all" />
+                <input type="checkbox" aria-label={t('tables.selectAll')} checked={allVisibleSelected} onChange={toggleAllVisible} data-testid="select-all" />
               </th>
               {COLUMNS.map((c) => (
                 <th
@@ -126,11 +126,17 @@ export function TablesPage() {
               visible.map((o) => (
                 <tr key={o.id} data-testid="order-row" data-order-id={o.id} className={selected.has(o.id) ? 'is-selected' : ''}>
                   <td>
-                    <input type="checkbox" aria-label={`Select ${o.id}`} checked={selected.has(o.id)} onChange={() => toggleRow(o.id)} />
+                    <input type="checkbox" aria-label={t('tables.selectRow', { id: o.id })} checked={selected.has(o.id)} onChange={() => toggleRow(o.id)} />
                   </td>
-                  <td data-col="id">{o.id}</td>
-                  <td data-col="customer">{o.customer}</td>
-                  <td data-col="city">{o.city}</td>
+                  <td data-col="id" translate="no">
+                    {o.id}
+                  </td>
+                  <td data-col="customer" translate="no">
+                    {o.customer}
+                  </td>
+                  <td data-col="city" translate="no">
+                    {o.city}
+                  </td>
                   <td data-col="date" data-value={o.date}>
                     {date(o.date)}
                   </td>

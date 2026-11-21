@@ -29,7 +29,7 @@ export function ProductCard({ product, list, onAdded }: { product: Product; list
     <article className="card product" data-testid="product-card" data-product-id={product.id} data-stock={stock}>
       <Link to={href} className="product__media" onClick={select} tabIndex={-1} aria-hidden>
         {product.image ? (
-          <img src={`${import.meta.env.BASE_URL}${product.image}`} alt={name} title={name} width={400} height={300} loading="lazy" />
+          <img src={`${import.meta.env.BASE_URL}${product.image}`} alt={name} title={name} width={400} height={300} loading="lazy" translate="no" />
         ) : (
           <Icon fontSize="inherit" />
         )}
@@ -50,7 +50,9 @@ export function ProductCard({ product, list, onAdded }: { product: Product; list
 
       <h2 className="product__name">
         <Link to={href} onClick={select} data-testid="product-link">
-          <span data-testid="product-name">{name}</span>
+          <span data-testid="product-name" translate="no">
+            {name}
+          </span>
         </Link>
       </h2>
 

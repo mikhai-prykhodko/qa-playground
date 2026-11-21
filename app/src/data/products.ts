@@ -41,7 +41,8 @@ export interface Product {
   category: Category;
   isNew?: boolean;
   name: Record<Lang, string>;
-  description: Record<Lang, string>;
+  /** Per language, optionally per locale ("de-DE") where regional spelling differs. */
+  description: Record<Lang, string> & Partial<Record<string, string>>;
   /** Regular gross price per market (incl. VAT). A market without a price doesn't sell it. */
   price: Partial<Record<MarketCode, number>>;
   discountPercent?: number;

@@ -12,12 +12,8 @@ import { QuantityStepper } from './QuantityStepper';
 export function CartLine({ item, compact = false }: { item: CartItem; compact?: boolean }) {
   const { t, money, to } = useMarket();
   const { setQty, remove } = useCart();
-  const variant = [
-    item.variant?.size,
-    item.variant?.color ? t(`color.${item.variant.color}` as TranslationKey) : undefined,
-  ]
-    .filter(Boolean)
-    .join(' · ');
+  const size = item.variant?.size;
+  const color = item.variant?.color ? t(`color.${item.variant.color}` as TranslationKey) : undefined;
 
   return (
     <li
@@ -27,12 +23,14 @@ export function CartLine({ item, compact = false }: { item: CartItem; compact?: 
       data-product-id={item.productId}
     >
       <div className="cart-line__info">
-        <Link to={to(`shop/${item.productId}`)} className="cart-line__name" data-testid="line-name">
+        <Link to={to(`shop/${item.productId}`)} className="cart-line__name" data-testid="line-name" translate="no">
           {item.name}
         </Link>
-        {variant && (
+        {(size || color) && (
           <span className="muted small" data-testid="line-variant">
-            {variant}
+            {size && <span translate="no">{size}</span>}
+            {size && color && ' · '}
+            {color}
           </span>
         )}
         <span className="muted small" data-testid="line-unit-price" data-amount={item.price}>

@@ -9,7 +9,8 @@ import { useMarket } from '../context/MarketContext';
  */
 export function LegacyPage() {
   return (
-    <section className="legacy">
+    // English-only content inside a translated page: lang="en" tells browsers and screen readers
+    <section className="legacy" lang="en">
       <h1 data-testid="page-title">Legacy account tools</h1>
       <p className="legacy__note">Internal tool · English only · last updated 2009</p>
       <OrderHistory />

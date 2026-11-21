@@ -24,7 +24,7 @@ export function InfoPage() {
         </ol>
       </nav>
       <h1 data-testid="page-title">{title}</h1>
-      <p>{t('info.body', { title, market: market.name })}</p>
+      <p>{t('info.body', { title, market: t(`market.${market.code}` as TranslationKey) })}</p>
     </article>
   );
 }

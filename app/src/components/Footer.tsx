@@ -49,10 +49,18 @@ export function Footer() {
       </div>
 
       <div className="site-footer__bottom">
-        <span>© 2026 QA Playground · {t('footer.copyright')}</span>
         <span>
-          market <strong data-testid="footer-market">{market.code.toUpperCase()}</strong> · language{' '}
-          <strong data-testid="footer-lang">{lang.toUpperCase()}</strong>
+          © 2026 <span translate="no">QA Playground</span> · {t('footer.copyright')}
+        </span>
+        <span>
+          {t('footer.market')}{' '}
+          <strong data-testid="footer-market" translate="no">
+            {market.code.toUpperCase()}
+          </strong>{' '}
+          · {t('footer.language')}{' '}
+          <strong data-testid="footer-lang" translate="no">
+            {lang.toUpperCase()}
+          </strong>
         </span>
         <a href="#top" title={t('footer.backToTop')} className="back-to-top">
           ↑

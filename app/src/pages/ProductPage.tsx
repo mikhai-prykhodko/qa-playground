@@ -80,7 +80,9 @@ function ProductDetails({ product, related }: { product: Product; related: Produ
           <li>
             <Link to={`${to('shop')}?category=${product.category}`}>{t(`category.${product.category}` as TranslationKey)}</Link>
           </li>
-          <li aria-current="page">{name}</li>
+          <li aria-current="page" translate="no">
+            {name}
+          </li>
         </ol>
       </nav>
 
@@ -118,7 +120,7 @@ function Gallery({ product }: { product: Product }) {
   return (
     <section className="gallery" aria-label={t('product.gallery')} data-testid="gallery">
       <figure className={`gallery__main gallery__main--${VIEWS[active]}`} data-testid="gallery-main" data-image={active}>
-        {src ? <img src={src} alt={`${product.name[lang]} – ${view}`} width={400} height={300} /> : <Icon fontSize="inherit" />}
+        {src ? <img src={src} alt={`${product.name[lang]} – ${view}`} width={400} height={300} translate="no" /> : <Icon fontSize="inherit" />}
         <figcaption className="gallery__caption small">{view}</figcaption>
       </figure>
       <div className="gallery__thumbs">
@@ -186,7 +188,7 @@ function BuyBox({ product }: { product: Product }) {
         )}
       </div>
 
-      <h1 id="product-title" data-testid="page-title">
+      <h1 id="product-title" data-testid="page-title" translate="no">
         {product.name[lang]}
       </h1>
       <a href="#reviews" className="buy-box__rating">
@@ -215,7 +217,7 @@ function BuyBox({ product }: { product: Product }) {
           options={sizes}
           value={size}
           onChange={setSize}
-          render={(o) => <span>{o.id}</span>}
+          render={(o) => <span translate="no">{o.id}</span>}
           ariaLabel={(o) => (o.available ? o.id : t('product.unavailable', { option: o.id }))}
         />
       )}
@@ -306,7 +308,7 @@ function OptionGroup<T extends string>({
       <span className="option-group__label" id={`${name}-label`}>
         {label}
         {selected && (
-          <strong className="option-group__value" data-testid="option-selected">
+          <strong className="option-group__value" data-testid="option-selected" translate={swatches ? undefined : 'no'}>
             : {swatches ? t(`color.${selected.id}` as TranslationKey) : selected.id}
           </strong>
         )}
@@ -342,7 +344,7 @@ function OptionGroup<T extends string>({
 type TabId = 'description' | 'specs' | 'reviews';
 
 function ProductTabs({ product }: { product: Product }) {
-  const { lang, t } = useMarket();
+  const { lang, locale, t } = useMarket();
   const [active, setActive] = useState<TabId>(() => (window.location.hash === '#reviews' ? 'reviews' : 'description'));
   const tabs: { id: TabId; label: string }[] = [
     { id: 'description', label: t('product.tab.description') },
@@ -369,7 +371,7 @@ function ProductTabs({ product }: { product: Product }) {
 
   return (
     <section className="tabs card" id="reviews" data-testid="product-tabs">
-      <div role="tablist" aria-label={product.name[lang]} className="tabs__list">
+      <div role="tablist" aria-labelledby="product-title" className="tabs__list">
         {tabs.map((tab, i) => (
           <button
             key={tab.id}
@@ -392,7 +394,10 @@ function ProductTabs({ product }: { product: Product }) {
 
       {/* All panels stay in the DOM; inactive ones are hidden — visible vs attached matters in tests. */}
       <div role="tabpanel" id="panel-description" aria-labelledby="tab-description" hidden={active !== 'description'} className="tabs__panel">
-        <p data-testid="product-description">{product.description[lang]}</p>
+        {/* localized by the catalog, not by the UI dictionary */}
+        <p data-testid="product-description" data-i18n="content">
+          {product.description[locale] ?? product.description[lang]}
+        </p>
       </div>
       <div role="tabpanel" id="panel-specs" aria-labelledby="tab-specs" hidden={active !== 'specs'} className="tabs__panel">
         <SpecsTable product={product} />
@@ -412,7 +417,7 @@ function SpecsTable({ product }: { product: Product }) {
         {product.specs.map((s) => (
           <tr key={s.key} data-spec={s.key}>
             <th scope="row">{t(`spec.${s.key}` as TranslationKey)}</th>
-            <td>{s.value}</td>
+            <td translate="no">{s.value}</td>
           </tr>
         ))}
       </tbody>
@@ -447,9 +452,11 @@ function ReviewCard({ review, isReply = false }: { review: Review | ReviewReply;
   const [voted, setVoted] = useState(false);
 
   return (
-    <article className={isReply ? 'review review--reply' : 'review'} data-testid="review-card" data-review-id={review.id} aria-label={review.author}>
+    <article className={isReply ? 'review review--reply' : 'review'} data-testid="review-card" data-review-id={review.id} aria-labelledby={`author-${review.id}`}>
       <header className="review__header">
-        <strong data-testid="review-author">{review.author}</strong>
+        <strong id={`author-${review.id}`} data-testid="review-author" translate="no">
+          {review.author}
+        </strong>
         {'staff' in review && review.staff && (
           <span className="badge-chip badge-chip--staff" data-testid="review-staff">
             <Icons.verified fontSize="inherit" /> {t('review.staff')}
@@ -460,7 +467,10 @@ function ReviewCard({ review, isReply = false }: { review: Review | ReviewReply;
           {date(review.date)}
         </time>
       </header>
-      <p data-testid="review-text">{review.text}</p>
+      {/* user-generated content stays in the language it was written in */}
+      <p data-testid="review-text" translate="no">
+        {review.text}
+      </p>
 
       {full && (
         <>

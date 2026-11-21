@@ -72,6 +72,8 @@
     "description": {
       "en": "Double-walled stainless steel keeps drinks cold for 24 hours or hot for 12.",
       "de": "Doppelwandiger Edelstahl hält Getränke 24 Stunden kalt oder 12 Stunden heiss.",
+      "de-DE": "Doppelwandiger Edelstahl hält Getränke 24 Stunden kalt oder 12 Stunden heiß.",
+      "de-AT": "Doppelwandiger Edelstahl hält Getränke 24 Stunden kalt oder 12 Stunden heiß.",
       "fr": "L'acier inoxydable à double paroi garde les boissons froides 24 heures ou chaudes 12 heures.",
       "it": "L'acciaio inox a doppia parete mantiene le bevande fredde per 24 ore o calde per 12."
     },
@@ -301,6 +303,8 @@
     "description": {
       "en": "Soft merino wool beanie that doesn't itch, one size.",
       "de": "Weiche Merinowollmütze, die nicht kratzt, Einheitsgrösse.",
+      "de-DE": "Weiche Merinowollmütze, die nicht kratzt, Einheitsgröße.",
+      "de-AT": "Weiche Merinowollmütze, die nicht kratzt, Einheitsgröße.",
       "fr": "Bonnet doux en laine mérinos qui ne gratte pas, taille unique.",
       "it": "Berretto morbido in lana merino che non punge, taglia unica."
     },

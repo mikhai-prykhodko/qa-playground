@@ -20,7 +20,7 @@ export function HomePage() {
       <h1 data-testid="page-title">{t('home.title')}</h1>
       <p className="lead">{t('home.subtitle')}</p>
       <p className="muted" data-testid="market-info">
-        {market.flag} {t('home.market', { market: market.name, currency: market.currency, vat: market.vatRate })}
+        {market.flag} {t('home.market', { market: t(`market.${market.code}` as TranslationKey), currency: market.currency, vat: market.vatRate })}
       </p>
 
       <div className="grid">

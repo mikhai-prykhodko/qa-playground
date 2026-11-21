@@ -5,6 +5,7 @@ import { cartItemToAnalytics, useCart } from '../context/CartContext';
 import { trackEcommerce } from '../analytics';
 import { useAuth } from '../context/AuthContext';
 import type { PaymentMethod } from '../markets/markets';
+import type { TranslationKey } from '../i18n';
 
 type Field = 'fullName' | 'street' | 'city' | 'postal' | 'payment';
 
@@ -34,7 +35,7 @@ export function CheckoutPage() {
       <section className="narrow center" data-testid="order-confirmation">
         <h1 data-testid="page-title">{t('checkout.success')}</h1>
         <p>{t('checkout.order', { order: '' })}</p>
-        <p className="order-number" data-testid="order-number">
+        <p className="order-number" data-testid="order-number" translate="no">
           {orderNumber}
         </p>
       </section>
@@ -52,7 +53,7 @@ export function CheckoutPage() {
       if (!values[f].trim()) errs[f] = t('error.required');
     });
     if (values.postal && !market.postalCode.pattern.test(values.postal.trim())) {
-      errs.postal = t('error.postal', { market: market.name });
+      errs.postal = t('error.postal', { market: t(`market.${market.code}` as TranslationKey) });
     }
     setErrors(errs);
     if (Object.keys(errs).length) return;

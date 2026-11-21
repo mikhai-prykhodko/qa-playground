@@ -373,3 +373,7 @@ input.search__input { padding: 7px 12px; border-radius: 999px; }
 .chat-widget__form { display: flex; gap: 6px; padding: 8px; border-top: 1px solid #e5e7eb; }
 .chat-widget__form input { flex: 1; padding: 6px 8px !important; }
 .chat-widget__form button { border: 0; background: #0b8457; color: #fff; border-radius: 8px; padding: 0 12px; cursor: pointer; }
+
+/* v1.3: a native <select> is as wide as its longest option ("Vereinigtes Königreich"),
+   which wrapped the header onto two rows in German. Cap it; the open list still shows full names. */
+.header__controls select { max-width: 11rem; text-overflow: ellipsis; }

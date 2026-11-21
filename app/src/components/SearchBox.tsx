@@ -119,7 +119,7 @@ export function SearchBox() {
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => goTo(p)}
               >
-                <span>{p.name[lang]}</span>
+                <span translate="no">{p.name[lang]}</span>
                 <span className="muted small">{money(priceIn(p, market).price)}</span>
               </li>
             ))
