@@ -27,6 +27,23 @@ import BakeryDiningOutlined from '@mui/icons-material/BakeryDiningOutlined';
 import EmojiFoodBeverageOutlined from '@mui/icons-material/EmojiFoodBeverageOutlined';
 import CheckroomOutlined from '@mui/icons-material/CheckroomOutlined';
 import Inventory2Outlined from '@mui/icons-material/Inventory2Outlined';
+import HikingOutlined from '@mui/icons-material/HikingOutlined';
+import CoffeeOutlined from '@mui/icons-material/CoffeeOutlined';
+import AcUnitOutlined from '@mui/icons-material/AcUnitOutlined';
+import FlashlightOnOutlined from '@mui/icons-material/FlashlightOnOutlined';
+import SoupKitchenOutlined from '@mui/icons-material/SoupKitchenOutlined';
+import StarOutlined from '@mui/icons-material/StarOutlined';
+import StarHalfOutlined from '@mui/icons-material/StarHalfOutlined';
+import StarBorderOutlined from '@mui/icons-material/StarBorderOutlined';
+import ThumbUpOutlined from '@mui/icons-material/ThumbUpOutlined';
+import AddOutlined from '@mui/icons-material/AddOutlined';
+import RemoveOutlined from '@mui/icons-material/RemoveOutlined';
+import GridViewOutlined from '@mui/icons-material/GridViewOutlined';
+import ViewListOutlined from '@mui/icons-material/ViewListOutlined';
+import FilterListOutlined from '@mui/icons-material/FilterListOutlined';
+import ChevronRightOutlined from '@mui/icons-material/ChevronRightOutlined';
+import VerifiedOutlined from '@mui/icons-material/VerifiedOutlined';
+import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
 export const Icons = {
   brand: FactCheckOutlined,
@@ -46,6 +63,18 @@ export const Icons = {
   sortDesc: ArrowDownwardOutlined,
   success: CheckCircleOutlined,
   delete: DeleteOutlineOutlined,
+  star: StarOutlined,
+  starHalf: StarHalfOutlined,
+  starEmpty: StarBorderOutlined,
+  thumbUp: ThumbUpOutlined,
+  plus: AddOutlined,
+  minus: RemoveOutlined,
+  gridView: GridViewOutlined,
+  listView: ViewListOutlined,
+  filter: FilterListOutlined,
+  chevronRight: ChevronRightOutlined,
+  verified: VerifiedOutlined,
+  close: CloseOutlined,
 };
 
 /** Product icons, referenced by the "icon" field in public/api/products.json. */
@@ -57,6 +86,11 @@ const PRODUCT_ICONS = {
   bakery: BakeryDiningOutlined,
   tea: EmojiFoodBeverageOutlined,
   apparel: CheckroomOutlined,
+  hiking: HikingOutlined,
+  coffee: CoffeeOutlined,
+  winter: AcUnitOutlined,
+  lantern: FlashlightOnOutlined,
+  fondue: SoupKitchenOutlined,
 };
 
 export function productIcon(name: string | undefined) {

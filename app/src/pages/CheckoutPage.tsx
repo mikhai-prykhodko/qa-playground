@@ -1,7 +1,8 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useMarket } from '../context/MarketContext';
-import { useCart } from '../context/CartContext';
+import { cartItemToAnalytics, useCart } from '../context/CartContext';
+import { trackEcommerce } from '../analytics';
 import { useAuth } from '../context/AuthContext';
 import type { PaymentMethod } from '../markets/markets';
 
@@ -9,7 +10,7 @@ type Field = 'fullName' | 'street' | 'city' | 'postal' | 'payment';
 
 export function CheckoutPage() {
   const { market, t, money, to } = useMarket();
-  const { items, total, clear } = useCart();
+  const { items, total, vat, shipping, clear } = useCart();
   const { user } = useAuth();
   const [values, setValues] = useState<Record<Field, string>>({
     fullName: user?.displayName ?? '',
@@ -21,6 +22,12 @@ export function CheckoutPage() {
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [placing, setPlacing] = useState(false);
+
+  useEffect(() => {
+    if (items.length) trackEcommerce('begin_checkout', market.currency, items.map((i) => cartItemToAnalytics(i, i.qty)));
+    // only when checkout is opened
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (orderNumber) {
     return (
@@ -53,6 +60,13 @@ export function CheckoutPage() {
     setPlacing(true);
     setTimeout(() => {
       const number = `ORD-${market.code.toUpperCase()}-${String(Math.floor(100000 + Math.random() * 900000))}`;
+      trackEcommerce('purchase', market.currency, items.map((i) => cartItemToAnalytics(i, i.qty)), {
+        transaction_id: number,
+        value: total, // overrides the item sum: the order total incl. shipping and rounding
+        tax: vat,
+        shipping,
+        payment_type: values.payment,
+      });
       clear();
       setOrderNumber(number);
     }, 800);

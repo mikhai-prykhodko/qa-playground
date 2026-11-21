@@ -23,6 +23,11 @@ export interface Market {
   shippingFee: number;
   freeShippingFrom: number;
   privacyLaw: string;
+  /**
+   * Smallest amount a total can be paid in. Switzerland rounds cash amounts to 5 centimes
+   * ("Rappenrundung"), so CH uses 0.05; EUR and GBP use 0.01.
+   */
+  roundingStep: 0.05 | 0.01;
 }
 
 export const MARKETS: Record<MarketCode, Market> = {
@@ -41,6 +46,7 @@ export const MARKETS: Record<MarketCode, Market> = {
     shippingFee: 9.9,
     freeShippingFrom: 100,
     privacyLaw: 'revDSG',
+    roundingStep: 0.05,
   },
   de: {
     code: 'de',
@@ -57,6 +63,7 @@ export const MARKETS: Record<MarketCode, Market> = {
     shippingFee: 4.95,
     freeShippingFrom: 50,
     privacyLaw: 'DSGVO',
+    roundingStep: 0.01,
   },
   at: {
     code: 'at',
@@ -73,6 +80,7 @@ export const MARKETS: Record<MarketCode, Market> = {
     shippingFee: 5.9,
     freeShippingFrom: 60,
     privacyLaw: 'DSGVO',
+    roundingStep: 0.01,
   },
   uk: {
     code: 'uk',
@@ -89,6 +97,7 @@ export const MARKETS: Record<MarketCode, Market> = {
     shippingFee: 3.99,
     freeShippingFrom: 40,
     privacyLaw: 'UK GDPR',
+    roundingStep: 0.01,
   },
 };
 
@@ -100,4 +109,14 @@ export function isMarketCode(value: string | undefined): value is MarketCode {
 
 export function intlLocale(market: Market, lang: Lang): string {
   return `${lang}-${market.region}`;
+}
+
+/**
+ * Rounds an amount to the market's rounding step, using integer cents to avoid
+ * floating-point errors: CH 59.925 → 59.95, DE 17.991 → 17.99.
+ */
+export function roundMoney(market: Market, amount: number): number {
+  const stepCents = Math.round(market.roundingStep * 100);
+  const cents = Math.round(amount * 100);
+  return (Math.round(cents / stepCents) * stepCents) / 100;
 }

@@ -1,11 +1,20 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMarket } from '../context/MarketContext';
-import { useCart } from '../context/CartContext';
+import { cartItemToAnalytics, useCart } from '../context/CartContext';
+import { trackEcommerce } from '../analytics';
+import { CartLine } from '../components/CartLine';
 import { Icons } from '../components/icons';
 
 export function CartPage() {
   const { market, t, money, to } = useMarket();
-  const { items, subtotal, vat, shipping, total, setQty, remove } = useCart();
+  const { items, subtotal, vat, shipping, rounding, total } = useCart();
+
+  useEffect(() => {
+    if (items.length) trackEcommerce('view_cart', market.currency, items.map((i) => cartItemToAnalytics(i, i.qty)));
+    // only when the page is opened, not on every quantity change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (items.length === 0) {
     return (
@@ -28,32 +37,9 @@ export function CartPage() {
     <section>
       <h1 data-testid="page-title">{t('cart.title')}</h1>
       <div className="cart-layout">
-        <ul className="card cart-list" data-testid="cart-items">
+        <ul className="card cart-list" data-testid="cart-lines">
           {items.map((item) => (
-            <li key={item.id} className="cart-item" data-testid="cart-item" data-product-id={item.id}>
-              <span className="cart-item__name" data-testid="cart-item-name">
-                {item.name}
-              </span>
-              <label className="inline-field">
-                <span className="sr-only">{t('cart.qty')}</span>
-                <input
-                  type="number"
-                  min={0}
-                  max={99}
-                  value={item.qty}
-                  onChange={(e) => setQty(item.id, Math.max(0, Math.min(99, Number(e.target.value) || 0)))}
-                  className="qty"
-                  aria-label={`${t('cart.qty')} ${item.name}`}
-                  data-testid="cart-item-qty"
-                />
-              </label>
-              <span className="num" data-testid="cart-item-total">
-                {money(item.price * item.qty)}
-              </span>
-              <button type="button" className="btn btn--small btn--ghost" onClick={() => remove(item.id)} data-testid="cart-item-remove">
-                {t('cart.remove')}
-              </button>
-            </li>
+            <CartLine key={item.lineId} item={item} />
           ))}
         </ul>
 
@@ -71,6 +57,14 @@ export function CartPage() {
             <dd data-testid="summary-shipping" data-amount={shipping}>
               {shipping === 0 ? t('cart.free') : money(shipping)}
             </dd>
+            {rounding !== 0 && (
+              <>
+                <dt className="muted small">{t('cart.rounding')}</dt>
+                <dd className="muted small" data-testid="summary-rounding" data-amount={rounding}>
+                  {money(rounding)}
+                </dd>
+              </>
+            )}
             <dt className="summary__total">{t('cart.total')}</dt>
             <dd className="summary__total" data-testid="summary-total" data-amount={total}>
               {money(total)}

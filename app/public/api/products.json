@@ -2,57 +2,369 @@
   {
     "id": "p-backpack",
     "icon": "backpack",
+    "category": "bags",
     "name": { "en": "Hiking Backpack", "de": "Wanderrucksack", "fr": "Sac à dos de randonnée", "it": "Zaino da trekking" },
+    "description": {
+      "en": "A 30-litre backpack for day hikes, with a ventilated back panel and a rain cover in the bottom pocket.",
+      "de": "Ein 30-Liter-Rucksack für Tageswanderungen mit belüftetem Rückenteil und Regenhülle im Bodenfach.",
+      "fr": "Un sac à dos de 30 litres pour les randonnées d'une journée, avec dos ventilé et housse de pluie dans la poche inférieure.",
+      "it": "Uno zaino da 30 litri per escursioni giornaliere, con schienale ventilato e coprizaino nella tasca inferiore."
+    },
     "price": { "ch": 89.9, "de": 79.99, "at": 82.99, "uk": 69.99 },
     "stock": 12,
-    "markets": ["ch", "de", "at", "uk"]
+    "markets": ["ch", "de", "at", "uk"],
+    "variants": {
+      "colors": [
+        { "id": "forest", "hex": "#2f5d3a", "available": true },
+        { "id": "navy", "hex": "#1e3a5f", "available": true },
+        { "id": "red", "hex": "#b3261e", "available": false }
+      ]
+    },
+    "specs": [
+      { "key": "volume", "value": "30 L" },
+      { "key": "weight", "value": "1.1 kg" },
+      { "key": "material", "value": "Recycled polyester" },
+      { "key": "dimensions", "value": "52 × 30 × 22 cm" },
+      { "key": "warranty", "value": "5 years" }
+    ],
+    "reviews": [
+      {
+        "id": "r-101",
+        "author": "Anna M.",
+        "rating": 5,
+        "date": "2025-09-14",
+        "text": "Comfortable even after six hours on the trail. The rain cover saved my laptop.",
+        "helpful": 12,
+        "replies": [
+          { "id": "r-101-1", "author": "QA Playground Team", "staff": true, "date": "2025-09-15", "text": "Thanks Anna, happy hiking!" },
+          { "id": "r-101-2", "author": "Luca R.", "staff": false, "date": "2025-09-20", "text": "Does it fit a 15-inch laptop?" }
+        ]
+      },
+      {
+        "id": "r-102",
+        "author": "Jonas K.",
+        "rating": 4,
+        "date": "2025-10-02",
+        "text": "Great pack, the hip belt pockets could be a bit bigger.",
+        "helpful": 4,
+        "replies": []
+      },
+      {
+        "id": "r-103",
+        "author": "Chloé D.",
+        "rating": 3,
+        "date": "2025-11-11",
+        "text": "Solid build, but the red colour I wanted is never in stock.",
+        "helpful": 1,
+        "replies": [
+          { "id": "r-103-1", "author": "QA Playground Team", "staff": true, "date": "2025-11-12", "text": "Red is coming back in spring." }
+        ]
+      }
+    ]
   },
   {
     "id": "p-bottle",
     "icon": "bottle",
+    "category": "drinkware",
     "name": { "en": "Steel Water Bottle", "de": "Stahl-Trinkflasche", "fr": "Gourde en acier", "it": "Borraccia in acciaio" },
+    "description": {
+      "en": "Double-walled stainless steel keeps drinks cold for 24 hours or hot for 12.",
+      "de": "Doppelwandiger Edelstahl hält Getränke 24 Stunden kalt oder 12 Stunden heiss.",
+      "fr": "L'acier inoxydable à double paroi garde les boissons froides 24 heures ou chaudes 12 heures.",
+      "it": "L'acciaio inox a doppia parete mantiene le bevande fredde per 24 ore o calde per 12."
+    },
     "price": { "ch": 24.9, "de": 19.99, "at": 21.99, "uk": 17.49 },
+    "discountPercent": 10,
     "stock": 50,
-    "markets": ["ch", "de", "at", "uk"]
+    "markets": ["ch", "de", "at", "uk"],
+    "variants": { "sizes": [{ "id": "500 ml", "available": true }, { "id": "750 ml", "available": true }, { "id": "1 L", "available": false }] },
+    "specs": [
+      { "key": "material", "value": "Stainless steel 18/8" },
+      { "key": "weight", "value": "340 g" },
+      { "key": "origin", "value": "Switzerland" }
+    ],
+    "reviews": [
+      { "id": "r-201", "author": "Mia S.", "rating": 5, "date": "2025-08-03", "text": "Ice cubes still there after a full day at the beach.", "helpful": 7, "replies": [] },
+      { "id": "r-202", "author": "Noah B.", "rating": 4, "date": "2025-08-21", "text": "Great bottle, slightly heavy.", "helpful": 2, "replies": [] }
+    ]
   },
   {
     "id": "p-knife",
     "icon": "tool",
+    "category": "outdoor",
     "name": { "en": "Swiss Pocket Knife", "de": "Schweizer Taschenmesser", "fr": "Couteau suisse", "it": "Coltellino svizzero" },
+    "description": {
+      "en": "Fifteen tools in a 91 mm handle, including scissors, saw and corkscrew.",
+      "de": "Fünfzehn Werkzeuge in einem 91-mm-Griff, darunter Schere, Säge und Korkenzieher.",
+      "fr": "Quinze outils dans un manche de 91 mm, dont ciseaux, scie et tire-bouchon.",
+      "it": "Quindici strumenti in un manico da 91 mm, tra cui forbici, sega e cavatappi."
+    },
     "price": { "ch": 39.0, "de": 42.5, "at": 43.9, "uk": 36.0 },
-    "stock": 8,
-    "markets": ["ch", "de", "at", "uk"]
+    "stock": 4,
+    "markets": ["ch", "de", "at", "uk"],
+    "specs": [
+      { "key": "dimensions", "value": "91 mm" },
+      { "key": "weight", "value": "92 g" },
+      { "key": "origin", "value": "Switzerland" },
+      { "key": "warranty", "value": "Lifetime" }
+    ],
+    "reviews": [
+      {
+        "id": "r-301",
+        "author": "Leon W.",
+        "rating": 5,
+        "date": "2025-07-19",
+        "text": "Classic. Bought one for my father and one for myself.",
+        "helpful": 9,
+        "replies": [
+          { "id": "r-301-1", "author": "Emma F.", "staff": false, "date": "2025-07-25", "text": "Same here, best gift ever." }
+        ]
+      }
+    ]
   },
   {
     "id": "p-chocolate",
     "icon": "gift",
+    "category": "food",
+    "isNew": true,
     "name": { "en": "Alpine Chocolate Box", "de": "Alpen-Schokoladenbox", "fr": "Boîte de chocolat alpin", "it": "Scatola di cioccolato alpino" },
+    "description": {
+      "en": "Twenty-four handmade pralines from a family chocolatier in the Bernese Oberland.",
+      "de": "Vierundzwanzig handgemachte Pralinen von einer Familien-Confiserie im Berner Oberland.",
+      "fr": "Vingt-quatre pralinés faits main par un chocolatier familial de l'Oberland bernois.",
+      "it": "Ventiquattro praline fatte a mano da una cioccolateria di famiglia dell'Oberland bernese."
+    },
     "price": { "ch": 14.5 },
     "stock": 100,
-    "markets": ["ch"]
+    "markets": ["ch"],
+    "specs": [
+      { "key": "weight", "value": "250 g" },
+      { "key": "origin", "value": "Switzerland" }
+    ],
+    "reviews": []
   },
   {
     "id": "p-pretzel",
     "icon": "bakery",
+    "category": "food",
     "name": { "en": "Bavarian Pretzel Kit", "de": "Bayerisches Brezel-Set", "fr": "Kit de bretzels bavarois", "it": "Kit pretzel bavarese" },
+    "description": {
+      "en": "Everything you need to bake twelve pretzels at home, including lye and coarse salt.",
+      "de": "Alles, um zu Hause zwölf Brezeln zu backen, inklusive Lauge und grobem Salz.",
+      "fr": "Tout le nécessaire pour cuire douze bretzels à la maison, soude et gros sel compris.",
+      "it": "Tutto il necessario per cuocere dodici pretzel a casa, incluse soda e sale grosso."
+    },
     "price": { "de": 12.99, "at": 13.49 },
     "stock": 30,
-    "markets": ["de", "at"]
+    "markets": ["de", "at"],
+    "specs": [
+      { "key": "weight", "value": "1.2 kg" },
+      { "key": "origin", "value": "Germany" }
+    ],
+    "reviews": [
+      { "id": "r-501", "author": "Sofia H.", "rating": 4, "date": "2025-10-10", "text": "Fun weekend project with the kids.", "helpful": 3, "replies": [] }
+    ]
   },
   {
     "id": "p-tea",
     "icon": "tea",
+    "category": "home",
     "name": { "en": "English Tea Set", "de": "Englisches Teeservice", "fr": "Service à thé anglais", "it": "Servizio da tè inglese" },
+    "description": {
+      "en": "Fine bone china teapot with four cups and saucers.",
+      "de": "Teekanne aus feinem Knochenporzellan mit vier Tassen und Untertassen.",
+      "fr": "Théière en porcelaine fine avec quatre tasses et soucoupes.",
+      "it": "Teiera in porcellana fine con quattro tazze e piattini."
+    },
     "price": { "uk": 29.99, "ch": 39.9 },
     "stock": 0,
-    "markets": ["uk", "ch"]
+    "markets": ["uk", "ch"],
+    "specs": [
+      { "key": "material", "value": "Bone china" },
+      { "key": "origin", "value": "United Kingdom" }
+    ],
+    "reviews": []
   },
   {
     "id": "p-jacket",
     "icon": "apparel",
+    "category": "apparel",
     "name": { "en": "Rain Jacket", "de": "Regenjacke", "fr": "Veste de pluie", "it": "Giacca antipioggia" },
+    "description": {
+      "en": "Waterproof, breathable three-layer shell with taped seams and a helmet-compatible hood.",
+      "de": "Wasserdichte, atmungsaktive Dreilagenjacke mit verklebten Nähten und helmtauglicher Kapuze.",
+      "fr": "Veste trois couches imperméable et respirante, coutures étanchées et capuche compatible casque.",
+      "it": "Guscio a tre strati impermeabile e traspirante, cuciture nastrate e cappuccio compatibile con il casco."
+    },
     "price": { "ch": 149.0, "de": 129.0, "at": 134.0, "uk": 115.0 },
+    "discountPercent": 15,
     "stock": 5,
-    "markets": ["ch", "de", "at", "uk"]
+    "markets": ["ch", "de", "at", "uk"],
+    "variants": {
+      "sizes": [
+        { "id": "XS", "available": true },
+        { "id": "S", "available": true },
+        { "id": "M", "available": true },
+        { "id": "L", "available": true },
+        { "id": "XL", "available": false }
+      ],
+      "colors": [
+        { "id": "black", "hex": "#1f2328", "available": true },
+        { "id": "yellow", "hex": "#e3b505", "available": true }
+      ]
+    },
+    "specs": [
+      { "key": "material", "value": "3-layer nylon membrane" },
+      { "key": "weight", "value": "420 g" },
+      { "key": "warranty", "value": "2 years" }
+    ],
+    "reviews": [
+      { "id": "r-701", "author": "Marco B.", "rating": 5, "date": "2025-10-28", "text": "Stayed dry in a full day of rain in Glencoe.", "helpful": 6, "replies": [] },
+      {
+        "id": "r-702",
+        "author": "Lea Z.",
+        "rating": 2,
+        "date": "2025-11-03",
+        "text": "Runs small. Size up.",
+        "helpful": 15,
+        "replies": [
+          { "id": "r-702-1", "author": "QA Playground Team", "staff": true, "date": "2025-11-04", "text": "Thanks for the tip, we added a size guide." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p-poles",
+    "icon": "hiking",
+    "category": "outdoor",
+    "isNew": true,
+    "name": { "en": "Trekking Poles", "de": "Trekkingstöcke", "fr": "Bâtons de trekking", "it": "Bastoncini da trekking" },
+    "description": {
+      "en": "A pair of carbon poles that fold to 38 cm and weigh just 390 g.",
+      "de": "Ein Paar Carbonstöcke, faltbar auf 38 cm und nur 390 g schwer.",
+      "fr": "Une paire de bâtons en carbone pliables à 38 cm, seulement 390 g.",
+      "it": "Un paio di bastoncini in carbonio, pieghevoli a 38 cm, solo 390 g."
+    },
+    "price": { "ch": 59.9, "de": 54.99, "at": 56.99, "uk": 49.99 },
+    "stock": 20,
+    "markets": ["ch", "de", "at", "uk"],
+    "specs": [
+      { "key": "material", "value": "Carbon" },
+      { "key": "weight", "value": "390 g" },
+      { "key": "dimensions", "value": "38–130 cm" }
+    ],
+    "reviews": []
+  },
+  {
+    "id": "p-mug",
+    "icon": "coffee",
+    "category": "drinkware",
+    "name": { "en": "Camping Mug", "de": "Campingbecher", "fr": "Tasse de camping", "it": "Tazza da campeggio" },
+    "description": {
+      "en": "Enamelled steel mug, 350 ml, survives every campfire.",
+      "de": "Emaillierter Stahlbecher, 350 ml, übersteht jedes Lagerfeuer.",
+      "fr": "Tasse en acier émaillé, 350 ml, résiste à tous les feux de camp.",
+      "it": "Tazza in acciaio smaltato, 350 ml, resiste a ogni falò."
+    },
+    "price": { "ch": 19.9, "de": 16.99, "at": 17.99, "uk": 14.99 },
+    "stock": 3,
+    "markets": ["ch", "de", "at", "uk"],
+    "variants": {
+      "colors": [
+        { "id": "white", "hex": "#f5f5f5", "available": true },
+        { "id": "navy", "hex": "#1e3a5f", "available": true }
+      ]
+    },
+    "specs": [
+      { "key": "volume", "value": "350 ml" },
+      { "key": "material", "value": "Enamelled steel" }
+    ],
+    "reviews": [
+      { "id": "r-901", "author": "Elias T.", "rating": 4, "date": "2025-06-30", "text": "Chipped a little after a year, still my favourite mug.", "helpful": 2, "replies": [] }
+    ]
+  },
+  {
+    "id": "p-beanie",
+    "icon": "winter",
+    "category": "apparel",
+    "name": { "en": "Merino Beanie", "de": "Merino-Mütze", "fr": "Bonnet en mérinos", "it": "Berretto in merino" },
+    "description": {
+      "en": "Soft merino wool beanie that doesn't itch, one size.",
+      "de": "Weiche Merinowollmütze, die nicht kratzt, Einheitsgrösse.",
+      "fr": "Bonnet doux en laine mérinos qui ne gratte pas, taille unique.",
+      "it": "Berretto morbido in lana merino che non punge, taglia unica."
+    },
+    "price": { "ch": 29.9, "de": 24.99, "at": 25.99, "uk": 21.99 },
+    "discountPercent": 20,
+    "stock": 40,
+    "markets": ["ch", "de", "at", "uk"],
+    "variants": {
+      "colors": [
+        { "id": "grey", "hex": "#8a8f98", "available": true },
+        { "id": "red", "hex": "#b3261e", "available": true },
+        { "id": "black", "hex": "#1f2328", "available": true }
+      ]
+    },
+    "specs": [
+      { "key": "material", "value": "100% merino wool" },
+      { "key": "origin", "value": "New Zealand" }
+    ],
+    "reviews": []
+  },
+  {
+    "id": "p-lantern",
+    "icon": "lantern",
+    "category": "outdoor",
+    "isNew": true,
+    "name": { "en": "LED Camping Lantern", "de": "LED-Campinglaterne", "fr": "Lanterne LED de camping", "it": "Lanterna LED da campeggio" },
+    "description": {
+      "en": "Rechargeable lantern with 400 lumens and up to 60 hours of light.",
+      "de": "Wiederaufladbare Laterne mit 400 Lumen und bis zu 60 Stunden Licht.",
+      "fr": "Lanterne rechargeable de 400 lumens, jusqu'à 60 heures d'éclairage.",
+      "it": "Lanterna ricaricabile da 400 lumen, fino a 60 ore di luce."
+    },
+    "price": { "ch": 44.9, "de": 39.99, "at": 41.99 },
+    "stock": 15,
+    "markets": ["ch", "de", "at"],
+    "specs": [
+      { "key": "weight", "value": "280 g" },
+      { "key": "warranty", "value": "2 years" }
+    ],
+    "reviews": []
+  },
+  {
+    "id": "p-fondue",
+    "icon": "fondue",
+    "category": "home",
+    "name": { "en": "Cheese Fondue Set", "de": "Käsefondue-Set", "fr": "Service à fondue au fromage", "it": "Set per fonduta" },
+    "description": {
+      "en": "Cast-iron caquelon, burner and six forks for a traditional Swiss fondue.",
+      "de": "Gusseisen-Caquelon, Rechaud und sechs Gabeln für ein traditionelles Schweizer Fondue.",
+      "fr": "Caquelon en fonte, réchaud et six fourchettes pour une fondue suisse traditionnelle.",
+      "it": "Caquelon in ghisa, fornelletto e sei forchette per una fonduta svizzera tradizionale."
+    },
+    "price": { "ch": 79.9 },
+    "discountPercent": 25,
+    "stock": 6,
+    "markets": ["ch"],
+    "specs": [
+      { "key": "material", "value": "Cast iron" },
+      { "key": "weight", "value": "3.4 kg" },
+      { "key": "origin", "value": "Switzerland" }
+    ],
+    "reviews": [
+      {
+        "id": "r-1201",
+        "author": "Anna M.",
+        "rating": 5,
+        "date": "2025-12-02",
+        "text": "Perfect for winter evenings, heats evenly.",
+        "helpful": 8,
+        "replies": [
+          { "id": "r-1201-1", "author": "Jonas K.", "staff": false, "date": "2025-12-05", "text": "Which cheese mix do you use?" },
+          { "id": "r-1201-2", "author": "Anna M.", "staff": false, "date": "2025-12-06", "text": "Half Gruyère, half Vacherin." }
+        ]
+      }
+    ]
   }
 ]

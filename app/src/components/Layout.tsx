@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { Navigate, Outlet, useParams } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
+import { trackPageView } from '../analytics';
 import { MARKETS, isMarketCode, type Lang } from '../markets/markets';
 import { MarketProvider } from '../context/MarketContext';
 import { CartProvider } from '../context/CartContext';
@@ -34,10 +35,14 @@ export function Layout() {
 
 function Shell() {
   const { market, lang } = useParams();
+  const location = useLocation();
   useEffect(() => {
     document.documentElement.lang = lang ?? 'en';
     document.documentElement.dataset.market = market;
   }, [market, lang]);
+  useEffect(() => {
+    trackPageView(market ?? '', lang ?? '', location.pathname);
+  }, [market, lang, location.pathname]);
 
   return (
     <div className="app">

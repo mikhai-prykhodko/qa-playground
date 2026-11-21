@@ -1,10 +1,10 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useMarket } from '../context/MarketContext';
 import { useAuth } from '../context/AuthContext';
-import { useCart } from '../context/CartContext';
 import { MARKETS, MARKET_CODES, type Lang, type MarketCode } from '../markets/markets';
 import type { TranslationKey } from '../i18n';
 import { Icons } from './icons';
+import { MiniCart } from './MiniCart';
 
 const NAV: { path: string; key: TranslationKey }[] = [
   { path: '', key: 'nav.home' },
@@ -19,7 +19,6 @@ const NAV: { path: string; key: TranslationKey }[] = [
 export function Header() {
   const { market, lang, t, to } = useMarket();
   const { user, logout } = useAuth();
-  const { count } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -75,12 +74,7 @@ export function Header() {
             </div>
           )}
 
-          <NavLink to={to('cart')} className="cart-link" data-testid="cart-link">
-            <Icons.cart fontSize="small" /> {t('nav.cart')}{' '}
-            <span className="badge" data-testid="cart-count">
-              {count}
-            </span>
-          </NavLink>
+          <MiniCart />
 
           {user ? (
             <div className="user-box">
