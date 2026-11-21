@@ -5,6 +5,7 @@ import { MARKETS, MARKET_CODES, type Lang, type MarketCode } from '../markets/ma
 import type { TranslationKey } from '../i18n';
 import { Icons } from './icons';
 import { MiniCart } from './MiniCart';
+import { SearchBox } from './SearchBox';
 
 const NAV: { path: string; key: TranslationKey }[] = [
   { path: '', key: 'nav.home' },
@@ -14,6 +15,7 @@ const NAV: { path: string; key: TranslationKey }[] = [
   { path: 'frames', key: 'nav.frames' },
   { path: 'dialogs', key: 'nav.dialogs' },
   { path: 'shop', key: 'nav.shop' },
+  { path: 'legacy', key: 'nav.legacy' },
 ];
 
 export function Header() {
@@ -40,6 +42,8 @@ export function Header() {
           </span>
           QA Playground
         </NavLink>
+
+        <SearchBox />
 
         <div className="header__controls">
           <label className="inline-field">

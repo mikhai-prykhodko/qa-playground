@@ -2,6 +2,7 @@
   {
     "id": "p-backpack",
     "icon": "backpack",
+    "image": "images/products/p-backpack.svg",
     "category": "bags",
     "name": { "en": "Hiking Backpack", "de": "Wanderrucksack", "fr": "Sac à dos de randonnée", "it": "Zaino da trekking" },
     "description": {
@@ -65,6 +66,7 @@
   {
     "id": "p-bottle",
     "icon": "bottle",
+    "image": "images/products/p-bottle.svg",
     "category": "drinkware",
     "name": { "en": "Steel Water Bottle", "de": "Stahl-Trinkflasche", "fr": "Gourde en acier", "it": "Borraccia in acciaio" },
     "description": {
@@ -91,6 +93,7 @@
   {
     "id": "p-knife",
     "icon": "tool",
+    "image": "images/products/p-knife.svg",
     "category": "outdoor",
     "name": { "en": "Swiss Pocket Knife", "de": "Schweizer Taschenmesser", "fr": "Couteau suisse", "it": "Coltellino svizzero" },
     "description": {
@@ -125,6 +128,7 @@
   {
     "id": "p-chocolate",
     "icon": "gift",
+    "image": "images/products/p-chocolate.svg",
     "category": "food",
     "isNew": true,
     "name": { "en": "Alpine Chocolate Box", "de": "Alpen-Schokoladenbox", "fr": "Boîte de chocolat alpin", "it": "Scatola di cioccolato alpino" },
@@ -146,6 +150,7 @@
   {
     "id": "p-pretzel",
     "icon": "bakery",
+    "image": "images/products/p-pretzel.svg",
     "category": "food",
     "name": { "en": "Bavarian Pretzel Kit", "de": "Bayerisches Brezel-Set", "fr": "Kit de bretzels bavarois", "it": "Kit pretzel bavarese" },
     "description": {
@@ -168,6 +173,7 @@
   {
     "id": "p-tea",
     "icon": "tea",
+    "image": "images/products/p-tea.svg",
     "category": "home",
     "name": { "en": "English Tea Set", "de": "Englisches Teeservice", "fr": "Service à thé anglais", "it": "Servizio da tè inglese" },
     "description": {
@@ -188,6 +194,7 @@
   {
     "id": "p-jacket",
     "icon": "apparel",
+    "image": "images/products/p-jacket.svg",
     "category": "apparel",
     "name": { "en": "Rain Jacket", "de": "Regenjacke", "fr": "Veste de pluie", "it": "Giacca antipioggia" },
     "description": {
@@ -236,6 +243,7 @@
   {
     "id": "p-poles",
     "icon": "hiking",
+    "image": "images/products/p-poles.svg",
     "category": "outdoor",
     "isNew": true,
     "name": { "en": "Trekking Poles", "de": "Trekkingstöcke", "fr": "Bâtons de trekking", "it": "Bastoncini da trekking" },
@@ -258,6 +266,7 @@
   {
     "id": "p-mug",
     "icon": "coffee",
+    "image": "images/products/p-mug.svg",
     "category": "drinkware",
     "name": { "en": "Camping Mug", "de": "Campingbecher", "fr": "Tasse de camping", "it": "Tazza da campeggio" },
     "description": {
@@ -286,6 +295,7 @@
   {
     "id": "p-beanie",
     "icon": "winter",
+    "image": "images/products/p-beanie.svg",
     "category": "apparel",
     "name": { "en": "Merino Beanie", "de": "Merino-Mütze", "fr": "Bonnet en mérinos", "it": "Berretto in merino" },
     "description": {
@@ -314,6 +324,7 @@
   {
     "id": "p-lantern",
     "icon": "lantern",
+    "image": "images/products/p-lantern.svg",
     "category": "outdoor",
     "isNew": true,
     "name": { "en": "LED Camping Lantern", "de": "LED-Campinglaterne", "fr": "Lanterne LED de camping", "it": "Lanterna LED da campeggio" },
@@ -335,6 +346,7 @@
   {
     "id": "p-fondue",
     "icon": "fondue",
+    "image": "images/products/p-fondue.svg",
     "category": "home",
     "name": { "en": "Cheese Fondue Set", "de": "Käsefondue-Set", "fr": "Service à fondue au fromage", "it": "Set per fonduta" },
     "description": {

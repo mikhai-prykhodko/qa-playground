@@ -44,6 +44,7 @@ export function ShopPage() {
   const { state, reload } = useProducts();
   const [params, setParams] = useSearchParams();
   const { filters, sort, view } = readParams(params);
+  const q = params.get('q')?.trim() ?? '';
   const [lastAdded, setLastAdded] = useState<{ name: string; n: number } | null>(null);
 
   useEffect(() => {
@@ -52,8 +53,12 @@ export function ShopPage() {
     return () => clearTimeout(id);
   }, [lastAdded]);
 
-  const update = (next: Partial<{ filters: ShopFilters; sort: Sort; view: View }>) =>
-    setParams(writeParams(next.filters ?? filters, next.sort ?? sort, next.view ?? view), { replace: true });
+  const update = (next: Partial<{ filters: ShopFilters; sort: Sort; view: View }>) => {
+    const p = writeParams(next.filters ?? filters, next.sort ?? sort, next.view ?? view);
+    if (q) p.set('q', q);
+    setParams(p, { replace: true });
+  };
+  const clearSearch = () => setParams(writeParams(filters, sort, view), { replace: true });
 
   const inMarket = useMemo(() => (state.status === 'ready' ? state.products.filter((p) => isSoldIn(p, market)) : []), [state, market]);
 
@@ -67,6 +72,7 @@ export function ShopPage() {
     const price = (p: Product) => priceIn(p, market).price;
     const rows = inMarket.filter(
       (p) =>
+        (!q || p.name[lang].toLowerCase().includes(q.toLowerCase())) &&
         (filters.categories.length === 0 || filters.categories.includes(p.category)) &&
         (!filters.inStockOnly || stockStatus(p) !== 'out') &&
         (filters.min === undefined || price(p) >= filters.min) &&
@@ -78,7 +84,7 @@ export function ShopPage() {
     if (sort === 'name') sorted.sort((a, b) => a.name[lang].localeCompare(b.name[lang], locale));
     if (sort === 'rating') sorted.sort((a, b) => (averageRating(b) ?? 0) - (averageRating(a) ?? 0));
     return sorted;
-  }, [inMarket, filters.categories, filters.inStockOnly, filters.min, filters.max, sort, market, lang, locale]);
+  }, [inMarket, q, filters.categories, filters.inStockOnly, filters.min, filters.max, sort, market, lang, locale]);
 
   // view_item_list once per distinct result set
   const listKey = visible.map((p) => p.id).join(',');
@@ -125,6 +131,14 @@ export function ShopPage() {
           />
 
           <div className="shop-main">
+            {q && (
+              <p className="search-chip" role="status">
+                {t('search.resultsFor', { q })}{' '}
+                <button type="button" className="btn btn--small btn--ghost" onClick={clearSearch}>
+                  {t('search.clear')}
+                </button>
+              </p>
+            )}
             <div className="toolbar shop-toolbar" data-testid="shop-toolbar">
               <span className="muted" data-testid="result-count" data-count={visible.length} role="status">
                 {t('shop.results', { count: visible.length })}

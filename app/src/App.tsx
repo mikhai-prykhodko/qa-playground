@@ -12,6 +12,8 @@ import { DialogsPage } from './pages/DialogsPage';
 import { NewTabPage } from './pages/NewTabPage';
 import { ShopPage } from './pages/ShopPage';
 import { ProductPage } from './pages/ProductPage';
+import { InfoPage } from './pages/InfoPage';
+import { LegacyPage } from './pages/LegacyPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="new-tab" element={<NewTabPage />} />
           <Route path="shop" element={<ShopPage />} />
           <Route path="shop/:productId" element={<ProductPage />} />
+          <Route path="info/:slug" element={<InfoPage />} />
+          <Route path="legacy" element={<LegacyPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route
             path="checkout"

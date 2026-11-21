@@ -110,15 +110,17 @@ function ProductDetails({ product, related }: { product: Product; related: Produ
 const VIEWS = ['front', 'side', 'detail'] as const;
 
 function Gallery({ product }: { product: Product }) {
-  const { t } = useMarket();
+  const { lang, t } = useMarket();
   const [active, setActive] = useState(0);
   const Icon = productIcon(product.icon);
+  const view = t(`product.view.${VIEWS[active]}` as TranslationKey);
+  const src = product.image ? `${import.meta.env.BASE_URL}${product.image}` : null;
   return (
     <section className="gallery" aria-label={t('product.gallery')} data-testid="gallery">
-      <div className={`gallery__main gallery__main--${VIEWS[active]}`} data-testid="gallery-main" data-image={active}>
-        <Icon fontSize="inherit" />
-        <span className="gallery__caption small">{t(`product.view.${VIEWS[active]}` as TranslationKey)}</span>
-      </div>
+      <figure className={`gallery__main gallery__main--${VIEWS[active]}`} data-testid="gallery-main" data-image={active}>
+        {src ? <img src={src} alt={`${product.name[lang]} – ${view}`} width={400} height={300} /> : <Icon fontSize="inherit" />}
+        <figcaption className="gallery__caption small">{view}</figcaption>
+      </figure>
       <div className="gallery__thumbs">
         {VIEWS.map((v, i) => (
           <button
@@ -130,7 +132,7 @@ function Gallery({ product }: { product: Product }) {
             onClick={() => setActive(i)}
             data-testid="gallery-thumb"
           >
-            <Icon fontSize="inherit" />
+            {src ? <img src={src} alt="" width={72} height={54} /> : <Icon fontSize="inherit" />}
           </button>
         ))}
       </div>

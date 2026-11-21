@@ -36,6 +36,8 @@ export interface Product {
   id: string;
   /** Key of an icon in components/icons.ts (unknown keys fall back to a generic box). */
   icon: string;
+  /** Product photo, relative to the app base URL. Without it the icon is shown. */
+  image?: string;
   category: Category;
   isNew?: boolean;
   name: Record<Lang, string>;

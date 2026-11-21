@@ -37,6 +37,19 @@ docker run --rm -p 8080:8080 ghcr.io/mikhai-prykhodko/qa-playground:1.0.0
   - `data-strength` on the password meter
   - `data-tick` on the live ticker
 
+## Parts WITHOUT test ids (on purpose)
+
+Real sites are rarely fully instrumented. These parts have no `data-testid` and must be located by
+role, label, placeholder, text, title, alt text, CSS or XPath:
+
+| Part | Where | Stable hooks |
+|---|---|---|
+| Header search | every page | `role=search` landmark → `role=combobox` (placeholder "Search products…"), `role=listbox` / `role=option` suggestions. Enter with no suggestion selected → `shop?q=<term>`. |
+| Footer | every page | `<footer>` (role contentinfo) → `<nav>` columns named by their heading, links by text, payment badges by `title` ("TWINT accepted") |
+| Product images | cards, gallery | `<img alt="{product name}">` (gallery: `alt="{name} – {view}"`), `title` on card images; `loading="lazy"` |
+| Info pages | `/info/{shipping,returns,contact,about,careers,privacy,terms,imprint}` | `h1` = link text |
+| **Legacy page** | `/{market}/{lang}/legacy`, English only | Order history `<table>` with a `<caption>`, rows `tr.ordr`, details in the following `tr.dt` containing a nested table; newsletter form laid out with a table, inputs by `name`, **no labels**; support chat widget with **random class names on every load**: use its `aria-label`s and placeholder |
+
 ## Components that appear in several containers
 
 The same component and test ids are rendered in more than one place. Always scope by container:

@@ -5,6 +5,7 @@ import { MARKETS, isMarketCode, type Lang } from '../markets/markets';
 import { MarketProvider } from '../context/MarketContext';
 import { CartProvider } from '../context/CartContext';
 import { Header } from './Header';
+import { Footer } from './Footer';
 import { CookieBanner } from './CookieBanner';
 import { NotFoundPage } from '../pages/NotFoundPage';
 
@@ -45,15 +46,12 @@ function Shell() {
   }, [market, lang, location.pathname]);
 
   return (
-    <div className="app">
+    <div className="app" id="top">
       <Header />
       <main className="main">
         <Outlet />
       </main>
-      <footer className="footer">
-        QA Playground · market <strong data-testid="footer-market">{market?.toUpperCase()}</strong> · language{' '}
-        <strong data-testid="footer-lang">{lang?.toUpperCase()}</strong>
-      </footer>
+      <Footer />
       <CookieBanner />
     </div>
   );
