@@ -9,17 +9,6 @@ It is tested by separate frameworks in different languages, each in its own repo
 🌐 **Live app:** `https://mikhai-prykhodko.github.io/qa-playground/`
 🐳 **Docker image:** `ghcr.io/mikhai-prykhodko/qa-playground`
 
-## Test automation repositories
-
-| Stack | Repository | Status |
-|---|---|---|
-| Playwright · TypeScript | [qa-playground-playwright-ts](https://github.com/mikhai-prykhodko/qa-playground-playwright-ts) | ✅ UI, e2e, network mocking, a11y, i18n, visual regression |
-| Playwright · Python · pytest | `qa-playground-pytest` | 🔜 planned |
-| Selenium · Java · JUnit 5 · RestAssured | `qa-playground-java` | 🔜 planned |
-
-All of them test the same app against the same [testing contract](TESTING.md), so you can compare
-one scenario across languages.
-
 ## The app
 
 The URL decides the tenant: `/{market}/{language}/{page}`. For example `/ch/fr/shop` is the shop
