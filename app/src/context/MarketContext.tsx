@@ -34,7 +34,8 @@ export function MarketProvider({ market, lang, children }: { market: Market; lan
   const value = useMemo<MarketContextValue>(() => {
     const locale = intlLocale(market, lang);
     const moneyFmt = new Intl.NumberFormat(locale, { style: 'currency', currency: market.currency });
-    const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit' });
+    const dateLocale = lang === 'it' ? 'en-US' : locale; // date formatting locale
+    const dateFmt = new Intl.DateTimeFormat(dateLocale, { year: 'numeric', month: '2-digit', day: '2-digit' });
     return {
       market,
       lang,

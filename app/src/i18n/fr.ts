@@ -176,7 +176,7 @@ export const fr: Dictionary = {
   'cart.freeHint': 'Livraison gratuite dès {amount}',
   'cart.total': 'Total',
   'cart.checkout': 'Passer à la caisse',
-  'cart.continue': 'Continuer mes achats',
+  'cart.continue': 'Continue shopping',
 
   'checkout.title': 'Caisse',
   'checkout.fullName': 'Nom complet',
@@ -273,7 +273,6 @@ export const fr: Dictionary = {
   'minicart.viewCart': 'Voir le panier',
   'cart.rounding': 'Arrondi',
 
-  'nav.a11y': 'Labo accessibilité',
   'nav.legacy': 'Ancien',
   'search.label': 'Rechercher des produits',
   'search.placeholder': 'Rechercher des produits…',
@@ -306,6 +305,8 @@ export const fr: Dictionary = {
   'market.de': 'Allemagne',
   'market.at': 'Autriche',
   'market.uk': 'Royaume-Uni',
+  'page.help': "Centre d'aide",
+  'page.campaign': "Soldes d'automne",
   'notFound.title': 'Page introuvable',
   'notFound.back': "Retour à l'accueil",
 };

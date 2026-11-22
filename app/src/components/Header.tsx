@@ -16,7 +16,6 @@ const NAV: { path: string; key: TranslationKey }[] = [
   { path: 'dialogs', key: 'nav.dialogs' },
   { path: 'shop', key: 'nav.shop' },
   { path: 'legacy', key: 'nav.legacy' },
-  { path: 'a11y', key: 'nav.a11y' },
 ];
 
 export function Header() {

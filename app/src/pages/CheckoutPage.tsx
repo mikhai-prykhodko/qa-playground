@@ -61,7 +61,7 @@ export function CheckoutPage() {
 
     setPlacing(true);
     setTimeout(() => {
-      const number = `ORD-${market.code.toUpperCase()}-${String(Math.floor(100000 + Math.random() * 900000))}`;
+      const number = `ORD-${market.region}-${String(Math.floor(100000 + Math.random() * 900000))}`;
       trackEcommerce('purchase', market.currency, items.map((i) => cartItemToAnalytics(i, i.qty)), {
         transaction_id: number,
         value: total, // overrides the item sum: the order total incl. shipping and rounding

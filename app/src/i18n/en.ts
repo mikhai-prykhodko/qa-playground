@@ -271,7 +271,6 @@ export const en = {
   'minicart.viewCart': 'View cart',
   'cart.rounding': 'Rounding',
 
-  'nav.a11y': 'Accessibility lab',
   'nav.legacy': 'Legacy',
   'search.label': 'Search products',
   'search.placeholder': 'Search products…',
@@ -304,6 +303,8 @@ export const en = {
   'market.de': 'Germany',
   'market.at': 'Austria',
   'market.uk': 'United Kingdom',
+  'page.help': 'Help center',
+  'page.campaign': 'Autumn sale',
   'notFound.title': 'Page not found',
   'notFound.back': 'Back to home',
 };

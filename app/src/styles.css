@@ -378,63 +378,24 @@ input.search__input { padding: 7px 12px; border-radius: 999px; }
    which wrapped the header onto two rows in German. Cap it; the open list still shows full names. */
 .header__controls select { max-width: 11rem; text-overflow: ellipsis; }
 
-/* ===================== Seeded bugs (only with ?bugs=…, see src/bugs.ts) ===================== */
-/* low-contrast: light text on a light button, fails WCAG AA */
-html[data-bugs~='low-contrast'] .btn:not(.btn--ghost) { background: #c7d2fe; border-color: #c7d2fe; color: #ffffff; }
-/* button-color: a stray edit to the brand colour */
-html[data-bugs~='button-color'] { --primary: #0e7490; }
 
-/* ===================== v1.5: accessibility lab ===================== */
-.lab .lead { max-width: 760px; }
-.lab-modes { display: flex; gap: 8px; margin: 8px 0 16px; }
-.lab-modes .chip { text-decoration: none; color: var(--text); padding: 6px 14px; }
-.lab-modes .chip--active { color: #fff; }
-.lab-examples { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); } /* minmax(0,…): wide content must not stretch the column */
-.lab-example__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.lab-example__head h2 { margin: 0; font-size: 1.05rem; }
-.lab-wcag { font-size: 12px; font-weight: 600; color: #3730a3; background: var(--primary-soft); padding: 2px 8px; border-radius: 999px; }
-.lab-example__note { margin: 6px 0 8px; color: #374151; }
-.lab-example[data-mode='broken'] .lab-example__note strong { color: var(--danger); }
-.lab-example[data-mode='fixed'] .lab-example__note strong { color: var(--success); }
-.lab-start { font-size: 11px; color: var(--muted); background: none; border: 1px dashed var(--border); border-radius: 6px; padding: 1px 6px; cursor: default; }
-.lab-demo { margin-top: 8px; padding: 14px; border: 1px dashed #c7cdd8; border-radius: 8px; background: #ffffff; }
-.lab-topics { list-style: none; padding: 0; }
-.lab-field { display: flex; flex-direction: column; gap: 4px; max-width: 320px; border: 0; padding: 0; margin: 0; }
-.lab-field input, .lab-field select { width: 100%; }
-.lab-btn { display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 8px; border: 1px solid #4338ca; background: #4338ca; color: #fff; font: inherit; cursor: pointer; user-select: none; }
-.lab-error { color: #b91c1c; margin: 0; font-size: 14px; }
-.lab-fake-legend { font-weight: 600; }
-.lab-ph-low::placeholder { color: #d4d4d4; opacity: 1; }
-.lab-ph-ok::placeholder { color: #6b6b6b; opacity: 1; }
-.lab .lab-focus-low:focus, .lab .lab-focus-low:focus-visible { outline: 2px solid #ede9fe; outline-offset: 2px; }
-.lab .lab-focus-ok:focus, .lab .lab-focus-ok:focus-visible { outline: 3px solid #1e1b4b; outline-offset: 2px; }
-.lab .lab-no-outline:focus, .lab .lab-no-outline:focus-visible { outline: none; box-shadow: none; }
-.lab-hero { height: 120px; background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 12px; border-radius: 8px; }
-.lab-dark { padding: 8px 12px; border-radius: 6px; background: #ffffff; color: #111827; }
-@media (prefers-color-scheme: dark) {
-  .lab-dark { background: #111827; }
-  .lab-dark--broken { color: #374151; }
-  .lab-dark--fixed { color: #e5e7eb; }
-}
-.lab-icon-btn { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; border: 1px solid #c7cdd8; background: #fff; color: #b91c1c; }
-.lab-dropdown { position: relative; max-width: 240px; display: flex; flex-direction: column; gap: 4px; }
-.lab-dropdown__trigger { border: 1px solid #767676; border-radius: 8px; padding: 8px 10px; background: #fff; cursor: pointer; }
-.lab-dropdown__list { list-style: none; margin: 0; padding: 4px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
-.lab-dropdown__list li { padding: 6px 8px; cursor: pointer; }
-.lab-dropdown__list li[aria-selected='true'] { background: var(--primary-soft); }
-.lab-skip { display: inline-block; margin-bottom: 6px; }
-.lab-filters, .lab-results { padding: 8px; background: #f8fafc; border-radius: 6px; margin-top: 4px; }
-.lab-fake-heading { font-size: 1.3rem; font-weight: 700; margin: 0 0 4px; }
-.lab-table { border-collapse: collapse; }
-.lab-table td, .lab-table th { border: 1px solid #c7cdd8; padding: 4px 10px; text-align: left; }
-.lab-status { min-height: 1.5em; margin: 8px 0 0; color: #166534; }
-.lab-carousel { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.lab-carousel__slide { margin: 0; padding: 10px 14px; background: #eef2ff; border-radius: 8px; min-width: 240px; }
-.lab-timeout { margin-top: 8px; padding: 10px; border: 2px solid #b45309; border-radius: 8px; background: #fffbeb; }
-@keyframes lab-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-.lab-bounce { display: inline-block; padding: 2px 10px; border-radius: 999px; background: #dbeafe; color: #1e40af; font-weight: 700; animation: lab-bounce 1s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .lab-bounce--respectful { animation: none; } }
-.lab-promo { padding: 12px; background: #fef3c7; border-radius: 8px; }
-.lab-spacing { margin: 0; max-width: 320px; background: #f8fafc; padding: 6px; }
-.lab-qty { display: inline-flex; align-items: center; gap: 0; }
-.lab-qty__btn { padding: 0; border: 1px solid #767676; background: #fff; font-size: 12px; line-height: 1; cursor: pointer; display: inline-grid; place-items: center; }
+
+/* ===================== campaign badge ===================== */
+@keyframes badge-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.campaign-badge { display: inline-block; padding: 2px 10px; border-radius: 999px; background: #dbeafe; color: #1e40af; font-weight: 700; animation: badge-bounce 1s ease-in-out infinite; }
+
+/* ===================== v1.6: help, contact, campaign ===================== */
+.content-page { max-width: 760px; }
+.help-hint { color: #a3a3a3; }
+.faq { border-bottom: 1px solid var(--border); }
+.faq__q { padding: 12px 4px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; }
+.faq__a { margin: 0 4px 12px; color: var(--muted); }
+.contact-wave { display: block; width: 100%; height: 40px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+.contact-form { max-width: 480px; }
+.campaign-hero { height: 220px; border-radius: 12px; background-size: cover; background-position: center; display: flex; align-items: flex-end; justify-content: space-between; padding: 18px; }
+.campaign-hero__text { margin: 0; color: #ffffff; font-size: 1.5rem; font-weight: 700; }
+.campaign-slide { margin: 16px 0; padding: 12px 16px; background: var(--primary-soft); border-radius: 8px; font-weight: 600; }
+.campaign-banner { width: 700px; padding: 12px 16px; background: #fef3c7; border-radius: 8px; margin-bottom: 16px; }
+.campaign-social, .campaign-share { display: flex; align-items: center; gap: 4px; margin: 10px 0; }
+.campaign-social a { display: inline-grid; place-items: center; width: 36px; height: 36px; color: var(--primary); }
+.campaign-share__btn { width: 14px; height: 14px; padding: 0; font-size: 9px; line-height: 1; border: 1px solid #767676; background: #fff; cursor: pointer; }

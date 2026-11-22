@@ -273,7 +273,6 @@ export const it: Dictionary = {
   'minicart.viewCart': 'Vedi carrello',
   'cart.rounding': 'Arrotondamento',
 
-  'nav.a11y': 'Laboratorio accessibilità',
   'nav.legacy': 'Legacy',
   'search.label': 'Cerca prodotti',
   'search.placeholder': 'Cerca prodotti…',
@@ -306,6 +305,8 @@ export const it: Dictionary = {
   'market.de': 'Germania',
   'market.at': 'Austria',
   'market.uk': 'Regno Unito',
+  'page.help': 'Centro assistenza',
+  'page.campaign': "Saldi d'autunno",
   'notFound.title': 'Pagina non trovata',
   'notFound.back': 'Torna alla home',
 };

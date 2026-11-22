@@ -273,7 +273,6 @@ export const de: Dictionary = {
   'minicart.viewCart': 'Warenkorb anzeigen',
   'cart.rounding': 'Rundung',
 
-  'nav.a11y': 'Barrierefreiheit-Labor',
   'nav.legacy': 'Legacy',
   'search.label': 'Produkte suchen',
   'search.placeholder': 'Produkte suchen…',
@@ -306,6 +305,8 @@ export const de: Dictionary = {
   'market.de': 'Deutschland',
   'market.at': 'Österreich',
   'market.uk': 'Vereinigtes Königreich',
+  'page.help': 'Hilfe-Center',
+  'page.campaign': 'Herbst-Aktion',
   'notFound.title': 'Seite nicht gefunden',
   'notFound.back': 'Zurück zur Startseite',
 };

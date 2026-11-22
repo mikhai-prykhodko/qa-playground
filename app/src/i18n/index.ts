@@ -4,7 +4,6 @@ import { de } from './de';
 import { fr } from './fr';
 import { it } from './it';
 import { REGIONAL } from './regional';
-import { hasBug } from '../bugs';
 
 export type { TranslationKey };
 
@@ -24,9 +23,7 @@ export function translate(
   options: TranslateOptions = {},
 ): string {
   const regional = options.locale ? REGIONAL[options.locale]?.[key] : undefined;
-  // SEEDED BUG fr-fallback: the French cart title falls back to English
-  const missing = hasBug('fr-fallback') && lang === 'fr' && key === 'cart.title';
-  const template = regional ?? (missing ? undefined : DICTIONARIES[lang][key]) ?? en[key] ?? key;
+  const template = regional ?? DICTIONARIES[lang][key] ?? en[key] ?? key;
   const text = template.replace(/\{(\w+)\}/g, (_, name: string) => String(vars[name] ?? `{${name}}`));
   return options.pseudo ? pseudoLocalize(text) : text;
 }

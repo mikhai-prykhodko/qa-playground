@@ -3,10 +3,19 @@ import { useMarket } from '../context/MarketContext';
 import type { TranslationKey } from '../i18n';
 
 export const INFO_PAGES = {
-  help: ['shipping', 'returns', 'contact'],
+  help: ['shipping', 'returns'],
   company: ['about', 'careers'],
   legal: ['privacy', 'terms', 'imprint'],
 } as const;
+
+/** Real pages (not /info/…) listed in a footer column, with the dictionary key of their title. */
+const PAGE_LINKS: Partial<Record<keyof typeof INFO_PAGES, { path: string; key: TranslationKey }[]>> = {
+  help: [
+    { path: 'help', key: 'page.help' },
+    { path: 'contact', key: 'info.contact' },
+  ],
+  company: [{ path: 'campaign', key: 'page.campaign' }],
+};
 
 export type InfoSlug = (typeof INFO_PAGES)[keyof typeof INFO_PAGES][number];
 
@@ -28,6 +37,11 @@ export function Footer() {
               {INFO_PAGES[column].map((slug) => (
                 <li key={slug}>
                   <Link to={to(`info/${slug}`)}>{t(`info.${slug}` as TranslationKey)}</Link>
+                </li>
+              ))}
+              {PAGE_LINKS[column]?.map((link) => (
+                <li key={link.path}>
+                  <Link to={to(link.path)}>{t(link.key)}</Link>
                 </li>
               ))}
             </ul>
