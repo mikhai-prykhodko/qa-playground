@@ -269,9 +269,11 @@ export const it: Dictionary = {
   'color.white': 'Bianco',
   'minicart.title': 'Il tuo carrello',
   'minicart.open': 'Apri carrello ({count} articoli)',
+  'minicart.items': 'articoli',
   'minicart.viewCart': 'Vedi carrello',
   'cart.rounding': 'Arrotondamento',
 
+  'nav.a11y': 'Laboratorio accessibilità',
   'nav.legacy': 'Legacy',
   'search.label': 'Cerca prodotti',
   'search.placeholder': 'Cerca prodotti…',

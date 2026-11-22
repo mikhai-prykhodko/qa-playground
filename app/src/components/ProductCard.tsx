@@ -3,6 +3,7 @@ import { useMarket } from '../context/MarketContext';
 import { useCart } from '../context/CartContext';
 import { averageRating, priceIn, stockStatus, type Product } from '../data/products';
 import { trackEcommerce } from '../analytics';
+import { hasBug } from '../bugs';
 import { Icons, productIcon } from './icons';
 import { Rating } from './Rating';
 
@@ -81,7 +82,8 @@ export function ProductCard({ product, list, onAdded }: { product: Product; list
         <button
           type="button"
           className="btn"
-          disabled={stock === 'out'}
+          // SEEDED BUG soldout-addable: the button stays enabled when sold out
+          disabled={stock === 'out' && !hasBug('soldout-addable')}
           onClick={() => {
             add({ productId: product.id, name, category: product.category, price });
             onAdded?.(name);

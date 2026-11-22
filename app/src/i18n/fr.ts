@@ -269,9 +269,11 @@ export const fr: Dictionary = {
   'color.white': 'Blanc',
   'minicart.title': 'Votre panier',
   'minicart.open': 'Ouvrir le panier ({count} articles)',
+  'minicart.items': 'articles',
   'minicart.viewCart': 'Voir le panier',
   'cart.rounding': 'Arrondi',
 
+  'nav.a11y': 'Labo accessibilité',
   'nav.legacy': 'Ancien',
   'search.label': 'Rechercher des produits',
   'search.placeholder': 'Rechercher des produits…',

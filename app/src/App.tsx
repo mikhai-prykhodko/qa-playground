@@ -14,6 +14,7 @@ import { ShopPage } from './pages/ShopPage';
 import { ProductPage } from './pages/ProductPage';
 import { InfoPage } from './pages/InfoPage';
 import { LegacyPage } from './pages/LegacyPage';
+import { A11yLabOverview, A11yLabPage } from './pages/a11y/lab';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -36,6 +37,8 @@ export default function App() {
           <Route path="shop/:productId" element={<ProductPage />} />
           <Route path="info/:slug" element={<InfoPage />} />
           <Route path="legacy" element={<LegacyPage />} />
+          <Route path="a11y" element={<A11yLabOverview />} />
+          <Route path="a11y/:topic" element={<A11yLabPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route
             path="checkout"

@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from 'react';
 import { USERS, type Role } from '../data/users';
+import { hasBug } from '../bugs';
 
 const STORAGE_KEY = 'qa.session';
 
@@ -35,7 +36,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!username.trim() || !password) return 'required';
     const found = USERS.find((u) => u.username === username.trim() && u.password === password);
     if (!found) return 'invalid';
-    if (found.locked) return 'locked';
+    // SEEDED BUG locked-login: the lock flag is ignored
+    if (found.locked && !hasBug('locked-login')) return 'locked';
     const session: SessionUser = { username: found.username, displayName: found.displayName, role: found.role };
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     setUser(session);

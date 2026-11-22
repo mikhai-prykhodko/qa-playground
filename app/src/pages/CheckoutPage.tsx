@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useMarket } from '../context/MarketContext';
+import { postalPattern } from '../markets/markets';
 import { cartItemToAnalytics, useCart } from '../context/CartContext';
 import { trackEcommerce } from '../analytics';
 import { useAuth } from '../context/AuthContext';
@@ -52,7 +53,7 @@ export function CheckoutPage() {
     (['fullName', 'street', 'city', 'postal', 'payment'] as Field[]).forEach((f) => {
       if (!values[f].trim()) errs[f] = t('error.required');
     });
-    if (values.postal && !market.postalCode.pattern.test(values.postal.trim())) {
+    if (values.postal && !postalPattern(market).test(values.postal.trim())) {
       errs.postal = t('error.postal', { market: t(`market.${market.code}` as TranslationKey) });
     }
     setErrors(errs);

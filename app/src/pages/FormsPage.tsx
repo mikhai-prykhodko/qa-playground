@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { useMarket } from '../context/MarketContext';
+import { postalPattern } from '../markets/markets';
 import { CustomSelect } from '../components/CustomSelect';
 import type { TranslationKey } from '../i18n';
 
@@ -64,7 +65,7 @@ export function FormsPage() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = t('error.email');
     if (form.password.length < 8) e.password = t('error.password');
     if (!form.postalCode.trim()) e.postalCode = req;
-    else if (!market.postalCode.pattern.test(form.postalCode.trim())) e.postalCode = t('error.postal', { market: t(`market.${market.code}` as TranslationKey) });
+    else if (!postalPattern(market).test(form.postalCode.trim())) e.postalCode = t('error.postal', { market: t(`market.${market.code}` as TranslationKey) });
     if (!form.gender) e.gender = req;
     if (!form.terms) e.terms = t('error.terms');
     return e;

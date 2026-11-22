@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { roundMoney, type Market } from '../markets/markets';
 import { trackEcommerce, type AnalyticsItem } from '../analytics';
+import { hasBug } from '../bugs';
 import type { ColorId } from '../data/products';
 
 export interface CartVariant {
@@ -75,7 +76,8 @@ function readCart(key: string): CartItem[] {
 
 /** The cart is stored per market: a CH cart never leaks into the DE shop. */
 export function CartProvider({ market, children }: { market: Market; children: ReactNode }) {
-  const storageKey = `qa.cart.${market.code}`;
+  // SEEDED BUG shared-cart: one storage key for every market
+  const storageKey = hasBug('shared-cart') ? 'qa.cart.shared' : `qa.cart.${market.code}`;
   const [items, setItems] = useState<CartItem[]>(() => readCart(storageKey));
 
   useEffect(() => {
@@ -84,13 +86,16 @@ export function CartProvider({ market, children }: { market: Market; children: R
 
   const add = useCallback(
     (item: NewCartItem, qty = 1) => {
-      const lineId = lineIdOf(item.productId, item.variant);
+      // SEEDED BUG duplicate-lines: a unique id per click, so nothing ever merges
+      const lineId = hasBug('duplicate-lines') ? `${lineIdOf(item.productId, item.variant)}#${Date.now()}` : lineIdOf(item.productId, item.variant);
       setItems((prev) => {
         const existing = prev.find((i) => i.lineId === lineId);
         if (existing) return prev.map((i) => (i.lineId === lineId ? { ...i, qty: Math.min(99, i.qty + qty) } : i));
         return [...prev, { ...item, lineId, qty }];
       });
       trackEcommerce('add_to_cart', market.currency, [cartItemToAnalytics(item, qty)]);
+      // SEEDED BUG double-add-tracking: the event is sent a second time
+      if (hasBug('double-add-tracking')) trackEcommerce('add_to_cart', market.currency, [cartItemToAnalytics(item, qty)]);
     },
     [market.currency],
   );
@@ -123,8 +128,11 @@ export function CartProvider({ market, children }: { market: Market; children: R
 
   const value = useMemo<CartContextValue>(() => {
     const subtotal = round2(items.reduce((sum, i) => sum + i.price * i.qty, 0));
-    const vat = round2(subtotal - subtotal / (1 + market.vatRate / 100));
-    const shipping = items.length === 0 || subtotal >= market.freeShippingFrom ? 0 : market.shippingFee;
+    // SEEDED BUG vat-on-net: VAT added on top of a gross price instead of extracted from it
+    const vat = hasBug('vat-on-net') ? round2((subtotal * market.vatRate) / 100) : round2(subtotal - subtotal / (1 + market.vatRate / 100));
+    // SEEDED BUG free-shipping-boundary: > instead of >=
+    const reachesFreeShipping = hasBug('free-shipping-boundary') ? subtotal > market.freeShippingFrom : subtotal >= market.freeShippingFrom;
+    const shipping = items.length === 0 || reachesFreeShipping ? 0 : market.shippingFee;
     const raw = round2(subtotal + shipping);
     const total = roundMoney(market, raw);
     return {

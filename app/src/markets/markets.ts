@@ -1,3 +1,5 @@
+import { hasBug } from '../bugs';
+
 /**
  * Market (tenant) configuration.
  * Every market has its own languages, currency, VAT, postal-code rules,
@@ -101,6 +103,13 @@ export const MARKETS: Record<MarketCode, Market> = {
   },
 };
 
+/** Postal-code rule of a market. */
+export function postalPattern(market: Market): RegExp {
+  // SEEDED BUG ch-postal-5-digits: Swiss validation also accepts 5 digits
+  if (market.code === 'ch' && hasBug('ch-postal-5-digits')) return /^\d{4,5}$/;
+  return market.postalCode.pattern;
+}
+
 export const MARKET_CODES = Object.keys(MARKETS) as MarketCode[];
 
 export function isMarketCode(value: string | undefined): value is MarketCode {
@@ -116,7 +125,8 @@ export function intlLocale(market: Market, lang: Lang): string {
  * floating-point errors: CH 59.925 → 59.95, DE 17.991 → 17.99.
  */
 export function roundMoney(market: Market, amount: number): number {
-  const stepCents = Math.round(market.roundingStep * 100);
+  // SEEDED BUG no-chf-rounding: ignore the market step, always round to cents
+  const stepCents = hasBug('no-chf-rounding') ? 1 : Math.round(market.roundingStep * 100);
   const cents = Math.round(amount * 100);
   return (Math.round(cents / stepCents) * stepCents) / 100;
 }

@@ -267,9 +267,11 @@ export const en = {
   'color.white': 'White',
   'minicart.title': 'Your cart',
   'minicart.open': 'Open cart ({count} items)',
+  'minicart.items': 'items',
   'minicart.viewCart': 'View cart',
   'cart.rounding': 'Rounding',
 
+  'nav.a11y': 'Accessibility lab',
   'nav.legacy': 'Legacy',
   'search.label': 'Search products',
   'search.placeholder': 'Search products…',

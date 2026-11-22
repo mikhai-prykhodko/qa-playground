@@ -37,6 +37,26 @@ docker run --rm -p 8080:8080 ghcr.io/mikhai-prykhodko/qa-playground:1.0.0
   - `data-strength` on the password meter
   - `data-tick` on the live ticker
 
+## Accessibility lab
+
+`/{market}/{lang}/a11y` (overview) and `/a11y/{topic}?mode=broken|fixed`. The topics are contrast,
+forms, images, keyboard, structure, dynamic and reflow. There are 41 examples with **deliberate**
+defects and their corrected versions; the rest of the site targets WCAG 2.2 AA.
+
+- Each example is a `section[data-defect="<id>"][data-wcag="…"][data-mode="broken|fixed"]`, and the
+  demo inside it is `[data-demo]`. Only the demos contain defects.
+- A focusable `.lab-start` button sits right before each demo, as a starting point for keyboard walks.
+- Hooks for custom checks: `data-check="placeholder|border|focus|visible-label|error|required|autocomplete|alt-quality|reflow|spacing|target"`,
+  `data-action` (interactive targets), `data-order` (expected focus order), `data-message` (status text).
+- English only, marked `lang="en"`.
+
+## Seeded bugs (defect seeding)
+
+The app is correct by default. For proving that test suites catch bugs, 12 deliberate bugs can
+be switched on with `?bugs=<id>[,<id>…]` (kept for the session, `?bugs=` clears) or by setting
+sessionStorage `qa.bugs`. The ids and descriptions are in `app/src/bugs.ts`, and every injection
+point is marked `SEEDED BUG` in the code.
+
 ## Localization
 
 - **Pseudo-localization:** add `?pseudo=1` to any URL. Every dictionary string then renders as

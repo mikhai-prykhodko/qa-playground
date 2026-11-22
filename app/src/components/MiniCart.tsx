@@ -38,14 +38,16 @@ export function MiniCart() {
         className="cart-link"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={t('minicart.open', { count })}
         onClick={() => setOpen((o) => !o)}
         data-testid="mini-cart-toggle"
       >
+        {/* WCAG 2.5.3 Label in Name: no aria-label overriding the visible text — the name is
+            "Warenkorb 0 Artikel", so voice users can say what they see ("click Warenkorb") */}
         <Icons.cart fontSize="small" /> {t('nav.cart')}{' '}
         <span className="badge" data-testid="cart-count">
           {count}
         </span>
+        <span className="sr-only"> {t('minicart.items')}</span>
       </button>
 
       {open && (
